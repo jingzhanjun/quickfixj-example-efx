@@ -135,7 +135,6 @@ public class Downstream {
         QuoteRequest qr=new QuoteRequest();
         qr.setField(new QuoteReqID("QuoteRequestID_"+ UUID.randomUUID().toString()));
         qr.setField(new Symbol("USDCNY"));
-//        qr.setField(new ClOrdID("LimitOrderId"));
         qr.setField(new Side('1'));
         qr.setField(new QuoteType(0));
         qr.setField(new OrdType('2'));
@@ -148,7 +147,8 @@ public class Downstream {
         MarketDataRequest marketDataRequest=new MarketDataRequest();
         marketDataRequest.setField(new SubscriptionRequestType('1'));
         marketDataRequest.setField(new MDReqID("TEST_marketDataRequest"));
-//        marketDataRequest.setField(new Symbol("EUR.AUD"));
+        marketDataRequest.setField(new PartyID("EFX_PRICE"));
+        marketDataRequest.setField(new Symbol("CNY.JPY"));
         marketDataRequest.setField(new MarketDepth(1));
         Session.sendToTarget(marketDataRequest,initiator.getSessions().get(0));
     }
